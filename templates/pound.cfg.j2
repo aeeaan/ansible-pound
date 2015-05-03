@@ -16,7 +16,12 @@ ListenHTTPS
     Address {{ pound_https_address }}
     Port    {{ pound_https_port }}
     Cert    "{{ pound_cert }}"
-    Ciphers "{{ pound_ciphers }}
+    Ciphers "{{ pound_ciphers }}"
+    xHTTP   2
+    RewriteLocation 1
+    SSLHonorCipherOrder 1
+    HeadRemove "Ssl-Offloaded"
+    AddHeader "Ssl-Offloaded: 1"
 End
 {% endif %}
 
