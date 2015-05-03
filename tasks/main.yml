@@ -6,8 +6,8 @@
     - packages
 
 - name: configure pound
-  template: src="pound.cfg.j2" dest="/etc/pound.cfg"
-  notify: restart varnish
+  template: src="pound.cfg.j2" dest="/etc/pound.cfg" owner=root group=root mode=0644
+  notify: restart pound
   tags:
     - pound
     - configuration
@@ -22,3 +22,10 @@
     - pound
     - configuration
     - bugfix
+
+- name: ensure pound is enabled and running
+  service: name=pound enabled=yes state=started
+  tags:
+    - pound
+    - configuration
+    - services
