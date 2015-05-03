@@ -4,3 +4,10 @@
   tags:
     - pound
     - packages
+
+- name: configure pound
+  template: src="pound.cfg.j2" dest="/etc/pound.cfg"
+  notify: restart varnish
+  tags:
+    - pound
+    - configuration

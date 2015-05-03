@@ -1,0 +1,30 @@
+# {{ ansible_managed }}
+
+User "pound"
+Group "pound"
+Control "/var/lib/pound/pound.cfg"
+
+{% if pound_enable_http %}
+ListenHTTP
+    Address {{ pound_http_address }}
+    Port {{ pound_http_port }}
+End
+{% end if %}
+
+{% if pound_enable_https %}
+ListenHTTPS
+    Address {{ pound_https_address }}
+    Port    {{ pound_https_port }}
+    Cert    "{{ pound_cert }}"
+    Ciphers "{{ pound_ciphers }}
+End
+{% endif %}
+
+Service
+{% for item in pound_backends %}
+    BackEnd
+        Address {{ item.address }}
+        Port    {{ item.port }}
+    End
+{% endfor %}
+End
