@@ -3,7 +3,7 @@ pound_enable_http: false
 pound_enable_https: true
 
 pound_http_port: 80
-pound_https:port: 443
+pound_https_port: 443
 
 pound_http_address: 0.0.0.0
 pound_https_address: 0.0.0.0
