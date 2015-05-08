@@ -1,31 +1,43 @@
 Role Name
 =========
 
-A brief description of the role goes here.
+An ansible role for installing and configuring Pound. The primary focus of this role is to use Pound as an SSL frontend for varnish.
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+EPEL repository is required and is installed by the common role.
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+pound_enable_http: false
+pound_enable_https: true
+
+pound_http_port: 80
+pound_https_port: 443
+
+pound_http_address: 0.0.0.0
+pound_https_address: 0.0.0.0
+
+pound_cert: /etc/pki/tls/certs/pound.pem
+pound_ciphers: "EECDH+ECDSA+AESGCM EECDH+aRSA+AESGCM EECDH+ECDSA+SHA384 EECDH+ECDSA+SHA256 EECDH+aRSA+SHA384 EECDH+aRSA+SHA256 EECDH+AESGCM EECDH EDH+AESGCM EDH+aRSA HIGH !MEDIUM !LOW !aNULL !eNULL !LOW !RC4 !MD5 !EXP !PSK !SRP !DSS"
+
+pound_backends:
+  - address: 127.0.0.1
+    port: 80
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+* common
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
-
     - hosts: servers
       roles:
-         - { role: username.rolename, x: 42 }
+         - { role: pound }
 
 License
 -------
@@ -35,4 +47,4 @@ MIT
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+* [Joshua Rusch](https://correct.horse/)
