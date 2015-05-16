@@ -20,8 +20,8 @@ ListenHTTPS
     xHTTP   2
     RewriteLocation 1
     SSLHonorCipherOrder 1
-    HeadRemove "Ssl-Offloaded"
-    AddHeader "Ssl-Offloaded: 1"
+    HeadRemove "X-Forwarded-Proto"
+    AddHeader "X-Forwarded-Proto: https"
 End
 {% endif %}
 
