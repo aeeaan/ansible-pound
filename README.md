@@ -11,21 +11,30 @@ EPEL repository is required and is installed by the common role.
 Role Variables
 --------------
 
-pound_enable_http: false
-pound_enable_https: true
+| Variable                              | Default                       | Notes				|
+| :---                                  | :---                          | :---				|
+| pound_enable_http			| false				| 				|
+| pound_enable_https			| true				|				|
+| pound_http_port			| 80				|				|
+| pound_https_port			| 443				|				|
+| pound_http_address			| 0.0.0.0			|				|
+| pound_https_address			| 0.0.0.0			|				|
+| pound_cert				| /etc/pki/tls/certs/pound.pem	|				|
+| pound_ciphers				| "EECDH+ECDSA+AESGCM EECDH+aRSA+AESGCM EECDH+ECDSA+SHA384 EECDH+ECDSA+SHA256 EECDH+aRSA+SHA384 EECDH+aRSA+SHA256 EECDH+AESGCM EECDH EDH+AESGCM EDH+aRSA HIGH !MEDIUM !LOW !aNULL !eNULL !LOW !RC4 !MD5 !EXP !PSK !SRP !DSS" | |
 
-pound_http_port: 80
-pound_https_port: 443
+#### Complex variables
 
-pound_http_address: 0.0.0.0
-pound_https_address: 0.0.0.0
+  pound_backends:
+    - address: x.x.x.1
+      port: 80
+    - address: x.x.x.2
+      port: 80
 
-pound_cert: /etc/pki/tls/certs/pound.pem
-pound_ciphers: "EECDH+ECDSA+AESGCM EECDH+aRSA+AESGCM EECDH+ECDSA+SHA384 EECDH+ECDSA+SHA256 EECDH+aRSA+SHA384 EECDH+aRSA+SHA256 EECDH+AESGCM EECDH EDH+AESGCM EDH+aRSA HIGH !MEDIUM !LOW !aNULL !eNULL !LOW !RC4 !MD5 !EXP !PSK !SRP !DSS"
+  **Default:
 
-pound_backends:
-  - address: 127.0.0.1
-    port: 80
+  pound_backends:
+    - address: 127.0.0.1
+      port: 80
 
 Dependencies
 ------------
