@@ -30,7 +30,7 @@ Role Variables
       - address: x.x.x.2
         port: 80
 
-    **Default:**
+**Defaults:**
 
     pound_backends:
       - address: 127.0.0.1
