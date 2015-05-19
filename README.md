@@ -24,17 +24,17 @@ Role Variables
 
 #### Complex variables
 
-  pound_backends:
-    - address: x.x.x.1
-      port: 80
-    - address: x.x.x.2
-      port: 80
+    pound_backends:
+      - address: x.x.x.1
+        port: 80
+      - address: x.x.x.2
+        port: 80
 
-  **Default:
+    **Default:**
 
-  pound_backends:
-    - address: 127.0.0.1
-      port: 80
+    pound_backends:
+      - address: 127.0.0.1
+        port: 80
 
 Dependencies
 ------------
