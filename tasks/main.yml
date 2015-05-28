@@ -29,3 +29,21 @@
     - pound
     - configuration
     - services
+
+- name: configure firewalld for pound http
+  firewalld: zone=public port="{{ pound_http_port }}/tcp" permanent=true state=enabled
+  notify: reload firewall
+  when: pound_open_http_port and ansible_distribution_major_version|int > 6
+  tags:
+    - pound
+    - firewall
+    - configuration
+
+- name: configure firewalld for pound https
+  firewalld: zone=public port="{{ pound_https_port }}/tcp" permanent=true state=enabled
+  notify: reload firewall
+  when: pound_open_https_port and ansible_distribution_major_version|int > 6
+  tags:
+    - pound
+    - firewall
+    - configuration
