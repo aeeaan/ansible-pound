@@ -1,6 +1,6 @@
 ---
 - name: install pound
-  yum: name=Pound state=installed
+  yum: name=Pound state=present
   tags:
     - pound
     - packages
