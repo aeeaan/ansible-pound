@@ -1,4 +1,4 @@
-Role Name
+correcthorse.pound
 =========
 
 An ansible role for installing and configuring Pound. The primary focus of this role is to use Pound as an SSL frontend for varnish.
@@ -41,14 +41,14 @@ Role Variables
 Dependencies
 ------------
 
-* common
+- correcthorse.common
 
 Example Playbook
 ----------------
 
     - hosts: servers
       roles:
-         - { role: pound }
+         - { role: correcthorse.pound }
 
 License
 -------

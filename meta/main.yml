@@ -12,4 +12,5 @@ galaxy_info:
   categories:
   - clustering
   - web
-dependencies: []
+dependencies:
+  - { role: correcthorse.common }
