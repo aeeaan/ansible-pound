@@ -1,6 +1,6 @@
 ---
 - name: install pound
-  yum: name=Pound state=present
+  yum: name=Pound enablerepo=epel-testing state=present
   tags:
     - pound
     - packages
@@ -11,17 +11,6 @@
   tags:
     - pound
     - configuration
-
-# workaround for current EPEL 7 Pound package bug
-# pound won't create pidfile but systemd waits for one
-- name: fix pound systemd startup
-  copy: src=pound.service dest=/usr/lib/systemd/system/pound.service owner=root group=root mode=0664
-  when: ansible_distribution_major_version|int == 7
-  notify: reload systemd
-  tags:
-    - pound
-    - configuration
-    - bugfix
 
 - name: ensure pound is enabled and running
   service: name=pound enabled=yes state=started
