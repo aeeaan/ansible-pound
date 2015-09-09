@@ -1,0 +1,14 @@
+# {{ ansible_managed }}
+/var/log/pound/*log {
+    {{ pound_logrotate_period }}
+    rotate {{ pound_logrotate_keep }}
+    {% if pound_logrotate_compress %}compress{% else %}nocompress{% endif %}
+
+    missingok
+    notifempty
+    sharedscripts
+    delaycompress
+    postrotate
+        /bin/systemctl restart pound.service > /dev/null 2>/dev/null || true
+    endscript
+}

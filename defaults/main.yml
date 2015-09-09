@@ -17,3 +17,9 @@ pound_disable: SSLv3
 pound_backends:
   - address: 127.0.0.1
     port: 80
+
+pound_loglevel: 0
+pound_logfacility: daemon
+pound_logrotate_period: weekly
+pound_logrotate_keep: 5
+pound_logrotate_compress: false

@@ -4,6 +4,9 @@ User "pound"
 Group "pound"
 Control "/var/lib/pound/pound.cfg"
 
+LogFacility {{ pound_logfacility }}
+LogLevel    {{ pound_loglevel }}
+
 {% if pound_enable_http %}
 ListenHTTP
     Address {{ pound_http_address }}

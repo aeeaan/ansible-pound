@@ -12,6 +12,27 @@
     - pound
     - configuration
 
+- name: create pound log directory
+  file: path=/var/log/pound owner=root group=root mode=0700 state=directory
+  tags:
+    - pound
+    - configuration
+    - rsyslog
+
+- name: configure rsyslog for pound
+  template: src=rsyslog.conf.j2 dest=/etc/rsyslog.d/pound.conf
+  tags:
+    - pound
+    - configuration
+    - rsyslog
+
+- name: configure logrotate for pound
+  template: src=logrotate.j2 dest=/etc/logrotate.d/pound owner=root group=root mode=0644
+  tags:
+    - httpd
+    - logrotate
+    - configuration
+
 - name: ensure pound is enabled and running
   service: name=pound enabled=yes state=started
   tags:

@@ -24,6 +24,11 @@ Role Variables
 | pound_cert				| /etc/pki/tls/certs/pound.pem	|				|
 | pound_ciphers				| "EECDH+ECDSA+AESGCM EECDH+aRSA+AESGCM EECDH+ECDSA+SHA384 EECDH+ECDSA+SHA256 EECDH+aRSA+SHA384 EECDH+aRSA+SHA256 EECDH+AESGCM EECDH EDH+AESGCM EDH+aRSA HIGH !MEDIUM !LOW !aNULL !eNULL !LOW !RC4 !MD5 !EXP !PSK !SRP !DSS" | |
 | pound_disable				| SSLv3		      		|			        |
+| pound_loglevel			| 0				|				|
+| pound_logfacility			| daemon			|           	   	 	|
+| pound_logrotate_period		| weekly			|				|
+| pound_logrotate_keep			| 5				|				|
+| pound_logrotate_compress		| false				|				|
 
 #### Complex variables
 
