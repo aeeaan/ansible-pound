@@ -8,6 +8,11 @@ Requirements
 
 EPEL repository is required and is installed by the common role.
 
+Notes
+------------
+
+The default for rewritelocation had been changed from 1 to 2. A setting of 1 will interfere with redirects between http and https. In fact, I have found this setting to interfere more than help in my setups where pound is an SSL frontend to varnish and apache is tricked into thinking it is running on HTTPS when it receives certain headers. If you are having strange issues with redirects, try setting this to 0 to turn it off.
+
 Role Variables
 --------------
 
@@ -29,6 +34,7 @@ Role Variables
 | pound_logrotate_period		| weekly			|				|
 | pound_logrotate_keep			| 5				|				|
 | pound_logrotate_compress		| false				|				|
+| pound_rewritelocation			| 2				| 				|
 
 #### Complex variables
 

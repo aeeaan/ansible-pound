@@ -21,7 +21,7 @@ ListenHTTPS
     Cert    "{{ pound_cert }}"
     Ciphers "{{ pound_ciphers }}"
     xHTTP   2
-    RewriteLocation 1
+    RewriteLocation {{ pound_rewritelocation }}
     SSLHonorCipherOrder 1
     Disable {{ pound_disable }}
     HeadRemove "X-Forwarded-Proto"
