@@ -1,6 +1,6 @@
 ---
 - name: install pound
-  yum: name=Pound enablerepo=epel-testing state=present
+  yum: name=Pound state=present
   tags:
     - pound
     - packages
